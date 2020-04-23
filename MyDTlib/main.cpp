@@ -1,6 +1,6 @@
 #include <iostream>
 #include "object.h"
-
+#include "smartpoint.h"
 using namespace std;
 using namespace MyDTlib;
 //32位大小为8  一个int + 虚函数指针
@@ -31,9 +31,25 @@ class Child : public Test
     }
 };
 
+class TestSmartPoint
+{
+public:
+  TestSmartPoint()
+  {
+      DEBUG<<endl;
+  }
+
+  ~TestSmartPoint()
+  {
+      DEBUG<<endl;
+  }
+
+};
+
+
 int main()
 {
-
+#if 0
     Object *obj1 = new Test();
     Object *obj2 = new Child();
 
@@ -42,6 +58,10 @@ int main()
 
     delete obj1;
     delete obj2;
+#endif
+    SmartPoint<TestSmartPoint> sp = new TestSmartPoint();
+
+    SmartPoint<Test> st = new Test();
 
     return 0;
 }

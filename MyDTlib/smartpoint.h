@@ -1,6 +1,9 @@
 #ifndef SMARTPOINT_H
 #define SMARTPOINT_H
 #include <iostream>
+#include "logfile.h"
+using namespace std;
+
 namespace MyDTlib{
 
 template<typename T>
@@ -48,16 +51,13 @@ public:
         return m_pointer;
     }
 
-
-
     ~SmartPoint()
     {
-        if(!m_pointer)
+        if(m_pointer)
         {
             delete m_pointer;
         }
     }
-
 
 private:
     T *m_pointer;
