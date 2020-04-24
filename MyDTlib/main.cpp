@@ -2,6 +2,9 @@
 #include "object.h"
 #include "smartpoint.h"
 #include "exception.h"
+#include "seqlist.h"
+#include "staticlist.h"
+#include "dynamiclist.h"
 using namespace std;
 using namespace MyDTlib;
 //32位大小为8  一个int + 虚函数指针
@@ -49,6 +52,7 @@ public:
 
 int main()
 {
+    /*
 #if 0
     Object *obj1 = new Test();
     Object *obj2 = new Child();
@@ -59,6 +63,9 @@ int main()
     SmartPoint<TestSmartPoint> sp = new TestSmartPoint();
     SmartPoint<Test> st = new Test();
 #endif
+*/
+    /*
+#if 0
     try {
         THROW_EXCEPTION(ArithmeticException,"HONG");
 //        throw Exception("test error",__FILE__,__LINE__);
@@ -74,6 +81,53 @@ int main()
         cout << e.location() << endl;
     }
     cout << "I am end"<<endl;
+#endif
+*/
+    /*
+#if 0
+    StaticList<int,5> l;
+
+    for(int i = 0;i <5;i++)
+    {
+        l.insert(i,2*i);
+    }
+    cout << l.length()<<endl;
+
+    l.remove(3);
+
+    for(int i = 0;i < l.length();i++)
+    {
+        cout << l[i] <<" "<<i <<endl;
+    }
+#endif
+*/
+
+#if 1
+    DynamicList<int> l(5);
+
+    for(int i = 0;i <5;i++)
+    {
+        l.insert(i,2*i);
+    }
+    cout << l.length()<<endl;
+
+    for(int i = 0;i < l.length();i++)
+    {
+        cout << l[i] <<" "<<i <<endl;
+    }
+
+    l.resizeSpace(10);
+
+    l.insert(5,10); //此处的插入不能在随意的位置,只能在0--length的范围内
+
+    for(int i = 0;i < l.length();i++)
+    {
+        cout << l[i] <<" "<<i <<endl;
+    }
+#endif
+
+
+
 
     return 0;
 }
