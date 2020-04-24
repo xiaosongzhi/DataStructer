@@ -5,9 +5,11 @@ CONFIG += qt
 
 SOURCES += \
         main.cpp \
-        object.cpp
+        object.cpp \
+    exception.cpp
 
 HEADERS += \
     logfile.h \
     object.h \
-    smartpoint.h
+    smartpoint.h \
+    exception.h
