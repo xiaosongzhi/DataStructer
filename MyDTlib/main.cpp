@@ -7,6 +7,7 @@
 #include "dynamiclist.h"
 #include "staticarray.h"
 #include "dynamicarray.h"
+#include "linklist.h"
 using namespace std;
 using namespace MyDTlib;
 //32位大小为8  一个int + 虚函数指针
@@ -50,6 +51,16 @@ public:
       DEBUG<<endl;
   }
 
+};
+
+class TestLinklist
+{
+public:
+    TestLinklist()
+    {
+        cout <<"throw 0"<<endl;
+//        throw 0;
+    }
 };
 
 int main()
@@ -151,7 +162,7 @@ int main()
         cout<<s2[j]<<endl;
     }
 #endif
-
+#if 0
     DynamicArray<int> da(10);
     for(int i = 0;i < da.length();i++)
     {
@@ -170,6 +181,36 @@ int main()
         cout << i << "  "<<db[i] << endl;
     }
     db[20] = 10;
+#endif
+    LinkList<TestLinklist> link;
+#if 0
+    for(int i = 0;i < 5;i++)
+    {
+        link.insert(i);
+    }
+
+    for(int i = 0;i < link.length();i++)
+    {
+        cout << link.get(i) << endl;
+    }
+
+    link.set(0,10);
+    cout << "----------------"<<endl;
+
+    for(int i = 0;i < link.length();i++)
+    {
+        cout << link.get(i) << endl;
+    }
+
+    link.clear();
+    cout << "----------------"<<endl;
+
+    for(int i = 0;i < link.length();i++)
+    {
+        cout << link.get(i) << endl;
+    }
+#endif
+
 
     return 0;
 }
