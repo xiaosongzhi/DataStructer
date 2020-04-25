@@ -5,6 +5,8 @@
 #include "seqlist.h"
 #include "staticlist.h"
 #include "dynamiclist.h"
+#include "staticarray.h"
+#include "dynamicarray.h"
 using namespace std;
 using namespace MyDTlib;
 //32位大小为8  一个int + 虚函数指针
@@ -102,7 +104,7 @@ int main()
 #endif
 */
 
-#if 1
+#if 0
     DynamicList<int> l(5);
 
     for(int i = 0;i <5;i++)
@@ -125,9 +127,49 @@ int main()
         cout << l[i] <<" "<<i <<endl;
     }
 #endif
+#if 0
+    StaticArray<int ,5> s1;
+    for(int i = 0;i < 5;i++)
+    {
+        s1[i] = i*i;
+    }
+
+    for(int j = 0;j < s1.length();j++)
+    {
+        cout<<s1[j]<<endl;
+    }
+
+    StaticArray<int ,5> s2 = s1;
+
+    s2.set(2,10);
+    s2.set(3,10);
 
 
 
+    for(int j = 0;j < s2.length();j++)
+    {
+        cout<<s2[j]<<endl;
+    }
+#endif
+
+    DynamicArray<int> da(10);
+    for(int i = 0;i < da.length();i++)
+    {
+        da[i] = i*3;
+    }
+    DynamicArray<int> db(da);
+    da.resize(5);
+    for(int i = 0;i < da.length();i++)
+    {
+        cout << i << "  "<<da[i] << endl;
+    }
+    cout <<"-----------------"<<endl;
+    db.resize(15);
+    for(int i = 0;i < db.length();i++)
+    {
+        cout << i << "  "<<db[i] << endl;
+    }
+    db[20] = 10;
 
     return 0;
 }

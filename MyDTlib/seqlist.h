@@ -2,6 +2,8 @@
 #define SEQLIST_H
 #include "list.h"
 #include "exception.h"
+#include <iostream>
+using namespace std;
 namespace MyDTlib{
 template<typename T>
 class SeqList : public List<T>

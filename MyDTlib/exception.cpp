@@ -33,7 +33,6 @@ Exception& Exception::operator=(const Exception& e)
     }
 
     return *this;
-
 }
 void Exception::init(const char*file,const char*message,int line)
 {

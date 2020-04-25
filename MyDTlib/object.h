@@ -8,9 +8,9 @@ class Object
 public:
     Object();
 
-    void *operator new(size_t size) throw();
+    void *operator new(size_t size) noexcept;
     void operator delete (void *p);
-    void *operator new[] (size_t size)throw();
+    void *operator new[] (size_t size) noexcept;
     void operator delete[] (void* p);
     virtual ~Object()
     {
