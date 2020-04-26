@@ -24,6 +24,18 @@ protected:
     }m_header;
 #endif
     int m_length;
+
+    virtual Node* create()
+    {
+        return new Node();
+    }
+
+    virtual void destroy(Node *dy)
+    {
+        delete  dy;
+    }
+
+
 public:
     LinkList()
     {
@@ -86,8 +98,9 @@ public:
             }
             Node *delNode = current->next;
             current->next = delNode->next;
-            delete delNode;
             m_length--;
+            delete delNode;
+
         }
 
         return ret;
@@ -153,10 +166,26 @@ public:
         {
             Node *delNode = m_header.next;
             m_header.next = delNode->next;
-
-            delete delNode;
+            m_length--;
+//            delete delNode;
+            destroy(delNode);
         }
-        m_length--;
+    }
+
+    void display()
+    {
+        Node *current = m_header.next;
+
+        while(current != NULL)
+        {
+            try{
+                cout << current->value << endl; //先遍历，再移位
+                current = current->next;
+            }catch(...)
+            {
+                cout <<"越界异常"<<endl;
+            }
+        }
     }
 
     ~LinkList()

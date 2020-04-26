@@ -10,6 +10,9 @@ SOURCES += \
     seqlist.cpp
 
 HEADERS += \
+    Pointer.h \
+    SharedPointer.h \
+    StaticLinkList.h \
     logfile.h \
     object.h \
     smartpoint.h \

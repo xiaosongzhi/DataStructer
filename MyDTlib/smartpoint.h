@@ -2,22 +2,26 @@
 #define SMARTPOINT_H
 #include <iostream>
 #include "logfile.h"
+#include "Pointer.h"
 using namespace std;
 
+//设计原则：同一片堆空间只能由一个智能指针的指向
 namespace MyDTlib{
 
 template<typename T>
-class SmartPoint
+class SmartPoint : public Pointer<T>
 {
+protected:
+//    T *m_pointer;
 public:
-    SmartPoint(T* p = NULL)
+    SmartPoint(T* p = NULL) : Pointer<T>(p)
     {
-        m_pointer = p;
+
     }
 
     SmartPoint(const SmartPoint<T> &obj)
     {
-        m_pointer = obj.m_pointer;
+        this->m_pointer = obj.m_pointer;
         (const_cast<SmartPoint<T>&>(obj)).m_pointer = NULL;
     }
 
@@ -25,42 +29,22 @@ public:
     {
         if(this != &obj)
         {
-            delete m_pointer;
-            m_pointer = obj.m_pointer;
+            T *temp = this->m_pointer;
+            this->m_pointer = obj.m_pointer;
             const_cast<SmartPoint<T>&>(obj).m_pointer;
+            delete temp;
         }
-    }
-
-    T* operator->()
-    {
-        return m_pointer;
-    }
-
-    T& operator*()
-    {
-        return *m_pointer;
-    }
-
-    bool isNull()
-    {
-        return (m_pointer == NULL);
-    }
-
-    T* get()
-    {
-        return m_pointer;
     }
 
     ~SmartPoint()
     {
-        if(m_pointer)
+        if(this->m_pointer)
         {
-            delete m_pointer;
+            delete this->m_pointer;
         }
     }
 
-private:
-    T *m_pointer;
+
 };
 }
 

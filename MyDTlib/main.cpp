@@ -8,13 +8,22 @@
 #include "staticarray.h"
 #include "dynamicarray.h"
 #include "linklist.h"
+#include "StaticLinkList.h"
+
+#include <QSharedPointer>
+
 using namespace std;
 using namespace MyDTlib;
 //32位大小为8  一个int + 虚函数指针
 class Test : public Object
 {
   public:
+    Test()
+    {
+        DEBUG<<endl;
+    }
     int x;
+
 
     virtual ~Test()
     {
@@ -65,18 +74,18 @@ public:
 
 int main()
 {
-    /*
-#if 0
-    Object *obj1 = new Test();
-    Object *obj2 = new Child();
-    cout << obj1 <<endl;
-    cout << obj2 <<endl;
-    delete obj1;
-    delete obj2;
+    QSharedPointer<int *> shared;
+#if 1
+//    Object *obj1 = new Test();
+//    Object *obj2 = new Child();
+//    cout << obj1 <<endl;
+//    cout << obj2 <<endl;
+//    delete obj1;
+//    delete obj2;
     SmartPoint<TestSmartPoint> sp = new TestSmartPoint();
     SmartPoint<Test> st = new Test();
 #endif
-*/
+
     /*
 #if 0
     try {
@@ -182,7 +191,13 @@ int main()
     }
     db[20] = 10;
 #endif
-    LinkList<TestLinklist> link;
+    StaticLinkList<int,6> link;
+    for(int i = 0;i < 6;i++)
+    {
+        link.insert(i);
+    }
+    link.display();
+
 #if 0
     for(int i = 0;i < 5;i++)
     {
