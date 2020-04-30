@@ -10,6 +10,7 @@ SOURCES += \
     seqlist.cpp
 
 HEADERS += \
+    CircleList.h \
     Pointer.h \
     SharedPointer.h \
     StaticLinkList.h \

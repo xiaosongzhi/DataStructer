@@ -9,7 +9,7 @@
 #include "dynamicarray.h"
 #include "linklist.h"
 #include "StaticLinkList.h"
-
+#include "CircleList.h"
 #include <QSharedPointer>
 
 using namespace std;
@@ -72,10 +72,33 @@ public:
     }
 };
 
+//约瑟夫环问题
+//total 总人数
+//s为第一个报数的人
+//n  出列位置
+void ysfh(int total,int s,int n)
+{
+    CircleList<int> cl;
+    for(int i = 0;i < total;i++)
+    {
+        cl.insert(i);
+    }
+    cl.dispaly();
+
+    cl.move(s-1);//游标先移动到开始位置
+
+    while(cl.length() > 0)//在循环中一直剔除
+    {
+
+    }
+
+}
+
 int main()
 {
+#if 0
     QSharedPointer<int *> shared;
-#if 1
+
 //    Object *obj1 = new Test();
 //    Object *obj2 = new Child();
 //    cout << obj1 <<endl;
@@ -191,12 +214,22 @@ int main()
     }
     db[20] = 10;
 #endif
-    StaticLinkList<int,6> link;
-    for(int i = 0;i < 6;i++)
+
+#if 0
+    LinkList<int> link;
+    for(int i = 0;i < 7;i++)
     {
         link.insert(i);
     }
-    link.display();
+    link.display(5);
+#endif
+    CircleList<int> cl;
+    for(int i = 0;i <20;i++)
+    {
+        cl.insert(i);
+    }
+
+    cl.dispaly();
 
 #if 0
     for(int i = 0;i < 5;i++)
